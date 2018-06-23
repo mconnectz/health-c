@@ -1,0 +1,59 @@
+.btn{
+    width:75px;
+    margin-left:7px;
+    
+   }
+   .btn-success{
+    background-color:rgb(13, 58, 13);
+    color:white;
+   }
+   .btn-info{
+    background-color:rgb(25, 25, 134);
+   color:white;
+   }
+   .btn-danger{
+   background-color:rgb(122, 10, 10);
+   color:white;
+   }
+   thead{
+    background-color:#5C6BC0;
+   }
+   .container{
+       margin-top:20px;
+   }
+   .mat-table {
+    overflow: auto;  
+    max-height: 500px;
+    
+    margin-left:20px;
+    margin-right:20px;
+    }
+    .mat-row:hover{
+      background-color:#EDE7F6;
+    }
+    .example-header {
+      min-height: 64px;
+      padding: 8px 24px 0;
+    }
+    
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+     .mat-header-row{
+      background-color:#7986CB;
+      color:#fff;
+    }
+    .mat-header-row,.mat-row{
+      border-bottom-color:#D7CCC8;
+    }
+    .mat-paginator{
+      color:#7986CB;
+      margin-left:20px;
+      margin-right:20px;
+    }
+    .mat-header-cell{
+      color:white;
+      font-family:verdana;
+      font-style:normal;
+    }

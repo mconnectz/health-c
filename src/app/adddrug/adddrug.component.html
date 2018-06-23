@@ -1,0 +1,37 @@
+<div *ngIf="user.role=='Padmin'">
+<mat-card>
+
+  <mat-card-header>
+      <img mat-card-avatar src="assets/img/bg1.jpg">
+      <div class="tex">ADD NEW DRUG</div>
+    
+    </mat-card-header>
+  
+  <div class="sub1">
+<mat-form-field class="mat">
+  <input matInput [(ngModel)]="drug.drugname" placeholder="Drug name">
+</mat-form-field>
+</div>
+<div class="sub1">
+<mat-form-field class="mat">
+  <input matInput [(ngModel)]="drug.drugbrand" placeholder="Drug brand ">
+</mat-form-field>
+</div>
+<div class="sub1">
+<mat-form-field class="mat">
+  <input matInput [(ngModel)]="drug.quantity" placeholder="Quantity">
+</mat-form-field>
+</div>
+<div class="sub1">
+<mat-form-field class="mat">
+  <input matInput  [(ngModel)]="drug.weight" placeholder="Weight">
+</mat-form-field>
+</div>
+<div class="sub1">
+<mat-form-field class="mat">
+  <input matInput  [(ngModel)]="drug.stock" placeholder="Stock">
+</mat-form-field>
+</div>
+<button  mat-raised-button color="primary" (click)="calldrug()" type="submit">Submit</button>       
+</mat-card>
+</div>

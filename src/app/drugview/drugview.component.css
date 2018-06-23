@@ -1,0 +1,22 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+ }
+ .table{
+    margin-top:40px;
+    width:650px;
+    table-layout: fixed;
+    margin-left:300px;
+    
+   }
+   table.table-bordered{
+    border:1px solid #1a237e;
+    margin-top:20px;
+   }
+   table.table-bordered > thead > tr > th{
+    border:1px solid #1a237e;
+   }
+   table.table-bordered > tbody > tr > td{
+    border:1px solid #1a237e;
+   }

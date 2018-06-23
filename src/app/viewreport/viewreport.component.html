@@ -1,0 +1,44 @@
+<div *ngIf="user.role=='Ladmin'">
+<mat-card>
+  <div class="cardheader">
+      <h2> Report Details</h2>
+      <div class="avatar" align="right">
+  
+      <img width="100" height="100" [src]="'data:image/jpg;base64,'+repos.photo">
+      <h4><span><strong>{{repos.patientId}}</strong></span></h4>
+    </div>
+
+<div class="line"></div>      
+<div class="container">
+    <table class="table table-bordered table-hover table-responsive" align="center">
+        <colgroup>
+          <col span="1" style="width: 25%;">
+          <col span="1" style="width: 75%;">
+        </colgroup>
+        <tr>
+          <td>PatientId:</td>
+         <td>{{repos.patientId}}</td>
+     </tr>
+   
+     <tr>
+       <td>Prescribed Doctor Id:</td>
+         <td>{{repos.prescribeddoctorId}}</td>
+       </tr>
+     
+       <tr>
+       <td>Date of Test:</td>
+       <td>{{repos.dateoftest | date: 'dd'}}/{{repos.dateoftest | date: 'MM'}}/{{repos.dateoftest | date: 'yyyy'}}</td>
+       </tr>
+   
+      <tr>
+      <td>Type of test:</td>
+      <td>{{repos.typeoftest}}</td>
+       </tr>
+    </table>
+</div>
+</div>
+<button mat-raised-button color="warn" (click)="convert(repos)">Download</button>
+<img width="150" height="150" [src]="'data:image/jpg;base64,'+repos.photo">
+
+</mat-card>
+</div>

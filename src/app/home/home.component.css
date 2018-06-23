@@ -1,0 +1,52 @@
+.fa {
+  font-size:30px;
+  color:#283593;
+  }
+  mat-form-field{
+   width:100%;
+  }
+  #center {
+   width: 600px;
+   margin: auto;
+   margin-top: 250px;
+   padding: 24px;
+   cursor: pointer;
+  }
+  
+  mat-form-field{
+   width:100%;
+  }
+  #top{
+   padding: 24px;
+  }
+  div{
+   transition: all 1s;
+  }
+  
+  .container{
+   display:flex;
+  background-color: white;
+  }
+  .box1{
+   flex-grow:3;
+   margin-right:20px;
+   cursor:pointer;
+  
+  }
+  .box2{
+   flex-grow:8;
+   cursor:pointer;
+  
+  }
+  h1{
+   text-align: center;
+   margin-top:140px;
+   font-size:60px;
+   font-family:Italic;
+   
+  }
+  
+  .mat-card{
+   background-color: #283593;
+   height:100%;
+  }

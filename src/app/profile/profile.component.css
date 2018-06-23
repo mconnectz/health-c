@@ -1,0 +1,85 @@
+.box1{
+    flex: 2;
+    order: 1;
+  }
+  .box2{
+    flex: 1;
+    order: 2;
+  }
+  .sub1 mat-form-field{
+    width: 100%;
+   
+  }
+  .sub2 mat-form-field{
+    width: 100%;
+  }
+  .mat{
+       margin-right:20px;
+       width:300px;
+      
+  }
+  .mat1{
+    color: #00BCD4;
+  }
+  .size{
+     width:50%;
+  }
+  
+  
+  
+  @media(min-width:700px){
+    .container{
+        display: flex;
+        flex-direction: row;
+    }
+    .sub1{
+        display: flex;
+        flex-direction: row;
+    }
+  }
+  .mat-card {
+    max-width: 700px;
+    margin: 0em auto;
+    text-align: center;
+  }
+  .signin-content {
+    padding: 60px 1rem;
+  }
+  .full-width-input {
+    width: 100%;
+  }
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+   }
+   .example-margin {
+    margin: 0 10px;
+   }
+   .go{
+    padding:73px;
+   }
+   .go1{
+    margin-left:1px;
+   }
+   .so{
+    padding:33px;
+   }
+   .so1{
+    padding:45px;
+   }
+   .ro{
+    padding:28px;
+   }
+   .ro1{
+    padding:50px;
+   }
+   label{
+  color: grey;
+  padding: 15px;
+  padding-top: 3px;
+   }
+  
+  
+  

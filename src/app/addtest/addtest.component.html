@@ -1,0 +1,32 @@
+<div *ngIf="user.role=='Ladmin'">
+<mat-card>
+  <div class="example-container">
+    <h3>Patient Report</h3>
+    <mat-form-field>
+      <input matInput [(ngModel)]="Repo.patientId" placeholder="Patient Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="Repo.prescribeddoctorId" placeholder="Prescribed Doctor Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="Repo.dateoftest" placeholder="Date of Test">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="text" [(ngModel)]="Repo.typeoftest" placeholder="Type of Test" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let test of filteredTests | async" [value]="test">
+        {{ test }}
+      </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <label for="file">Please Upload Your Report</label>
+  <input type="file" (change)="handleFileSelect($event)">
+  <div>
+      
+    <button mat-raised-button color="primary"(click)="showSuccess()" (click)="call()">Submit</button>
+  </div>
+  </mat-card>
+  </div>

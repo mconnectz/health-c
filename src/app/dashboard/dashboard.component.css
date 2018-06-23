@@ -1,0 +1,133 @@
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+     }
+  
+   .flex-container > div {
+  
+    margin: 10px;
+    padding: 20px;
+    font-size: 30px;
+    margin-left:50px;
+    margin-right:40px;
+    justify-content: center;
+    margin-top:20px;
+   }
+   .box .one{
+    width:50px;
+    height:60px;
+    margin-right:5px;
+   }
+   .rev{
+    background-color:#C51162 ;
+    color:white;
+    width:350px;
+   }
+   .rev1{
+    background-color: rgb(131, 7, 7);
+    color:white;
+    width:350px;
+   }
+   .rev2{
+    background-color:#2962FF;
+    color:white;
+    width:350px;
+   }
+   .rev3{
+    background-color: #00BFA5;
+    color:white;
+    width:350px;
+   }
+   .rev4{
+    background-color: #FF6D00;
+    color:white;
+    width:350px;
+   }
+   .rev5{
+    background-color: #1565C0;
+    color:white;
+    width:350px;
+   }
+   .rev6{
+    background-color:grey;
+    color:white;
+    width:350px;
+   }
+  
+   p{
+    font-size:15px;
+   }
+   .one{
+    flex-grow:2;
+    height:50%;
+   width:30px;
+   }
+   .two{
+    flex-grow:2;
+    height:50%;
+    width:30px;
+   }
+   .three{
+    flex-grow:2;
+    height:50%;
+    width:30px;
+   }
+  
+   .wrapper{
+    overflow:auto;
+   }
+   @media only screen and (max-width: 500px) {
+    h3 {
+        font-size: 15px;
+        margin-left:-5px;
+    }
+   p{
+     font-size: 15px;
+     margin-left:-5px;
+    }
+   }
+   .mat-icon{
+    color:#fff;
+    float:right;
+    font-size:60px;
+    margin-top:-85px;
+    margin-right:15px;
+    padding-right:50px;
+    padding-top:10px;
+    }
+    span{
+      color:#00BFA5;  
+    }
+    .row{
+        display:flex;
+        margin-top:20px;
+      }
+      .container1 {
+        width:650px;
+        margin-left:35px;
+      }
+      .container2{
+        width:650px;
+        margin-left:25px;
+      }
+      
+      .works{
+         float:left;
+      margin-left:-15px;
+      top:30px;
+      position: relative;
+      font-size:20px;
+      
+      }
+      
+      h4{
+        margin-left:55px;
+        margin-top:-20px;
+      }
+      .mat-icon{
+     
+        float:right;
+        font-size:60px;
+        margin-top:-85px;
+        margin-right:15px;
+        }

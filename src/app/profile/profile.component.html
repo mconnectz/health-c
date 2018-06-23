@@ -1,0 +1,789 @@
+<div *ngIf="user.role=='Sadmin'">
+  Hello {{user.username}}, welcome SuperAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Hadmin'">
+  Hello {{user.username}}, welcome HospitalAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Ladmin'">
+        <mat-card>
+                <mat-toolbar>
+                  <mat-toolbar-row>
+                    <span>DETAILS</span>
+                   
+                </mat-toolbar-row>
+              </mat-toolbar>
+                
+              <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+              <mat-step> 
+                   <ng-template matStepLabel>Basic Details</ng-template>
+              <div class="sub1">
+                <mat-form-field class="mat" color="accent">
+                  <input matInput name="Firstname"  [(ngModel)]="lab.lfirstname" placeholder="Firstname" >
+                </mat-form-field>
+                <mat-form-field color="accent" >
+                  <input matInput  [(ngModel)]="lab.llastname" placeholder="Lastname" >
+                </mat-form-field>
+              </div>
+              <div class="sub1">
+                    <label for="file">Please Upload Your Profile</label>
+                    <input type="file" (change)="handleFileSelect($event)">
+                    </div>
+                    <div class="sub2">
+                    <mat-form-field>
+                    <input matInput  [ngModel]="lab.lpic" placeholder="Upload picture">
+                </mat-form-field>
+            </div>
+            
+              
+              <div class="sub2">
+                <mat-form-field  class="mat" color="accent">
+                  <input matInput  [(ngModel)]="lab.lemail" placeholder="Email">
+                </mat-form-field>
+                </div>
+              
+              <div class="sub2">
+                  <mat-form-field  class="mat" color="accent">
+                      <textarea matInput  [(ngModel)]="lab.laddress" placeholder="Address"></textarea>
+                     </mat-form-field>
+                     </div>
+                     <div class="sub1">
+                    <mat-form-field class="mat" color="accent">
+                        <input matInput #input maxlength="10" [(ngModel)]="lab.lphone" placeholder="Phone">
+                     </mat-form-field>
+                     <mat-form-field>
+                        <input type="text" placeholder="Area" aria-label="Number"   [(ngModel)]="lab.larea" matInput [formControl]="Control2" [matAutocomplete]="auto3">
+                        <mat-autocomplete #auto3="matAutocomplete">
+                          <mat-option *ngFor="let area of filteredareas | async" [value]="area">
+                            {{ area }}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+              </div>
+          <div class="sub1" >
+                <mat-form-field class="mat">
+                        <input type="text" placeholder="City" aria-label="Number" [(ngModel)]="lab.lcity" matInput [formControl]="myControl1" [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete">
+                          <mat-option *ngFor="let city of filteredcities | async" [value]="city">
+                            {{ city }}
+                          </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                      <mat-form-field >
+                            <input type="text" placeholder="State" aria-label="Number"  [(ngModel)]="lab.lstate" matInput [formControl]="Control1" [matAutocomplete]="auto1">
+                            <mat-autocomplete #auto1="matAutocomplete">
+                              <mat-option *ngFor="let state of filteredstates | async" [value]="state">
+                                {{ state }}
+                              </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+            
+          </div>
+          <div class="sub1">
+              
+                          <mat-form-field class="mat">
+                                <input type="text" placeholder="Country" aria-label="Number"  [(ngModel)]="lab.lcountry" matInput [formControl]="Control3" [matAutocomplete]="auto4">
+                                <mat-autocomplete #auto4="matAutocomplete">
+                                  <mat-option *ngFor="let country of filteredcountries | async" [value]="country">
+                                    {{ country }}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+              
+              <mat-form-field >
+                <input matInput #input maxlength="6" [(ngModel)]="lab.lpincode" placeholder="PinCode">
+               </mat-form-field>
+              </div>
+              
+               <div>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+              </mat-step>
+              
+              
+              <mat-step>
+                <ng-template matStepLabel>Professional Details</ng-template>
+              <div class="sub1">
+               <mat-form-field class="mat" color="accent">
+                <input matInput  [(ngModel)]="lab.leducationdetails" placeholder="Education Details" >
+               </mat-form-field>
+              <mat-form-field color="accent" >
+                <input matInput  [(ngModel)]="lab.lcertificateno" placeholder="Certificate No" >
+              </mat-form-field>
+              </div>
+              
+              <div class="sub2">
+              <mat-form-field class="mat" color="accent">
+                <input matInput  [(ngModel)]="lab.lspecialist" placeholder="Specialization">
+              </mat-form-field>
+           </div>
+              
+           <div class="sub2">
+              <mat-form-field class="mat" color="accent">
+               <input matInput  [(ngModel)]="lab.lyearsofexperience" placeholder="Years of Experience" >
+              </mat-form-field>
+             
+              </div>
+                      
+              <div>
+                  <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                  <button mat-raised-button color="primary" (click)="showSuccess()" (click)="callLab()"type="submit">Submit</button>
+              </div>
+                  
+              </mat-step>
+                  
+              </mat-horizontal-stepper>
+              </mat-card>  
+  </div>
+  
+
+  
+  <div *ngIf="user.role=='Doctor'">
+ 
+<mat-card>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+            <mat-step >
+                
+                <ng-template matStepLabel>"Doctor Profile Form</ng-template>
+                 <div class="sub1">
+                    <mat-form-field class="mat" color="accent">
+                        <input type="text" matInput [(ngModel)]="doctor.dfirstname" placeholder="Firstname"  >
+                      </mat-form-field>
+                     
+                    <mat-form-field color="accent" >
+                        <input  type="text" matInput  [(ngModel)]="doctor.dlastname" placeholder="Lastname" >
+                    </mat-form-field>
+             </div>
+                 <div class="sub2">
+                    <mat-form-field  class="mat" color="accent">
+                        <input matInput [(ngModel)]="doctor.demail" placeholder="Email" >
+                      </mat-form-field>
+                  
+                </div>
+                  <div class="sub1">
+                        <label for="file">Please Upload Your Profile</label>
+                        <input type="file" (change)="handleFileSelect($event)">
+                        </div>
+                        <div class="sub2">
+                        <mat-form-field>
+                        <input matInput [ngModel]="doctor.dpic" placeholder="Upload picture">
+                    </mat-form-field>
+                </div>
+        
+                    <div class="sub2">
+                            <mat-form-field class="mat" color="accent">
+                                    <input matInput #input maxlength="10" [(ngModel)]="doctor.dmobile" placeholder="Mobile">
+                            </mat-form-field>
+                        </div>
+                <div class="sub4">
+                    <div class="sub1">
+                        <mat-form-field color="accent">
+                            <textarea matInput [(ngModel)]="doctor.daddress" placeholder="Address" ></textarea>
+                        </mat-form-field>
+                        </div>
+                        
+                        <div class="sub2">
+                            <mat-form-field class="mat">
+                                <input type="text" placeholder="Area"  [(ngModel)]="doctor.darea" matInput [formControl]="Control2" [matAutocomplete]="auto3">
+                                <mat-autocomplete #auto3="matAutocomplete">
+                                  <mat-option *ngFor="let area of filteredareas | async" [value]="area">
+                                    {{ area }}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                      </div>
+                  <div class="sub1" >
+                        <mat-form-field class="mat">
+                                <input type="text" placeholder="City" aria-label="Number" [(ngModel)]="doctor.dcity" matInput [formControl]="myControl1" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete">
+                                  <mat-option *ngFor="let city of filteredcities | async" [value]="city">
+                                    {{ city }}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                              <mat-form-field >
+                                    <input type="text" placeholder="State" aria-label="Number"  [(ngModel)]="doctor.dstate" matInput [formControl]="Control1" [matAutocomplete]="auto1">
+                                    <mat-autocomplete #auto1="matAutocomplete">
+                                      <mat-option *ngFor="let state of filteredstates | async" [value]="state">
+                                        {{ state }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                    
+                  </div>
+                  <div class="sub1">
+                      
+                                  <mat-form-field class="mat">
+                                        <input type="text" placeholder="Country" aria-label="Number"  [(ngModel)]="doctor.dcountry" matInput [formControl]="Control3" [matAutocomplete]="auto4">
+                                        <mat-autocomplete #auto4="matAutocomplete">
+                                          <mat-option *ngFor="let country of filteredcountries | async" [value]="country">
+                                            {{ country }}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                    </mat-form-field>
+                              <mat-form-field  color="accent">
+                                <input matInput #input maxlength="6"  [(ngModel)]="doctor.dpincode" placeholder="PinCode">
+                               </mat-form-field>
+                            
+                            </div>
+                            <div>
+                                <button  mat-raised-button color="primary" matStepperNext>Next</button>
+                           </div>
+                        </div>
+                       
+                      
+                       
+        
+                    </mat-step>
+                    
+                       <mat-step >
+                
+                            <ng-template matStepLabel>"Doctor Proffession Form"</ng-template>
+                  
+                      
+                            <div class="sub1">
+                                <mat-form-field class="mat" color="accent">
+                                    <input matInput  [(ngModel)]="doctor.deducationdetails" placeholder="Education Details" >
+                                  </mat-form-field>
+                                <mat-form-field color="accent" >
+                                    <input matInput  [(ngModel)]="doctor.dcertificateno" placeholder="Certificate No" >
+                                </mat-form-field>
+                            </div>
+                        
+                          
+                                  <div class="sub4">     
+                            <div class="sub1">
+                                <mat-form-field class="mat" color="accent" >
+                                    <input matInput  [(ngModel)]="doctor.dregistrationno" placeholder="Registration No" >
+                                </mat-form-field>
+                                <mat-form-field  color="accent">
+                                    <input matInput  [(ngModel)]="doctor.dspecialist" placeholder="Specialization" >
+                                  </mat-form-field>
+                                  </div>
+                            </div>
+                           
+                            <div class="sub2">
+                                <mat-form-field class="mat" color="accent">
+                                    <input matInput  [(ngModel)]="doctor.dyearsofexperience" placeholder="Years of Experience" >
+                                  </mat-form-field>
+                                  </div>
+                     <div>
+                            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                           <button mat-raised-button color="primary" (click)="showSuccess()" (click)="callDoc()"type="submit">Submit</button>
+                     </div>
+               </mat-step>
+            </mat-horizontal-stepper>
+        </mat-card>
+  </div>
+  
+  <div *ngIf="user.role=='Patient'">
+    <mat-card>
+      <mat-toolbar>
+              <mat-toolbar-row>
+                  <span>DETAILS</span>
+               
+              </mat-toolbar-row>
+      </mat-toolbar>
+      
+      <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+          <mat-step> 
+                            
+              <ng-template matStepLabel >Basic Details</ng-template>
+                   
+                      <div class="sub1">
+                          <mat-form-field class="mat" color="accent">
+                              <input matInput name="Firstname"  [(ngModel)]="User.firstname" placeholder="Firstname" >
+                            </mat-form-field>
+                          <mat-form-field color="accent" >
+                              <input matInput  [(ngModel)]="User.lastname" placeholder="Lastname" >
+                          </mat-form-field>
+                      </div>
+                      <div class="sub2">
+                        <mat-form-field class="mat" color="accent">
+                            <mat-select [(ngModel)]="User.relationship" placeholder="Relationship">
+                              <mat-option *ngFor="let relation of relations" [value]="relation.value">
+                                {{ relation.viewValue }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                            </div>
+                      <div class="sub2">
+                          <mat-form-field  class="mat" color="accent">
+                              <input matInput  [(ngModel)]="User.email" placeholder="Email"  >
+                            </mat-form-field>
+                     
+                          </div>
+                          <div class="sub1">
+                          <mat-form-field  class="mat" >
+                                <input matInput #input maxlength="10" [(ngModel)]="User.mobile" placeholder="Mobile">
+                               </mat-form-field>
+                            
+                             <mat-form-field>
+                                    <input matInput [matDatepicker]="picker1" placeholder="Date Of Birth" [(ngModel)]="User.dob">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                               </mat-form-field>
+                            </div>
+
+                          <div  class="sub1">
+                         <label for="file">Please Upload Your Profile</label>
+                          <input type="file" (change)="handleFileSelect($event)">
+                          </div>
+                          <div class="sub2">
+                          <mat-form-field color="accent">
+                          <input matInput [ngModel]="User.pic" placeholder="Upload picture">
+                        </mat-form-field>
+                          </div>
+                          <div class="sub1" >
+                              <mat-form-field class="mat" color="accent" >
+                                  <mat-select placeholder="Blood Group" [(value)]="User.bloodgroup" >
+                                      <mat-option value="A+">A+</mat-option>
+                                      <mat-option value="A-">A-</mat-option>
+                                      <mat-option value="B+">B+</mat-option>
+                                      <mat-option value="B-">B-</mat-option>
+                                      <mat-option value="O+">O+</mat-option>
+                              
+                                  </mat-select>
+                                  </mat-form-field>
+                                  <mat-form-field color="accent">
+                                      <mat-select placeholder="Gender" [(value)]="User.gender" >
+                                          <mat-option value="Male">Male</mat-option>
+                                          <mat-option value="Female">Female</mat-option>
+                                          <mat-option value="Others">Others</mat-option>
+                                      </mat-select>
+                                  </mat-form-field>
+                             
+                          </div>
+                        
+                      <div class="sub4">
+                          <div class="sub1">
+                              <mat-form-field color="accent">
+                                  <textarea matInput  [(ngModel)]="User.address" placeholder="Address" ></textarea>
+                              </mat-form-field>
+                          </div>
+                          </div>
+                          <div class="sub1" >
+                            <mat-form-field class="mat">
+                                    <input type="text" placeholder="City" aria-label="Number" [(ngModel)]="User.city" matInput [formControl]="myControl1" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option *ngFor="let city of filteredcities | async" [value]="city">
+                                        {{ city }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                                  <mat-form-field >
+                                        <input type="text" placeholder="State" aria-label="Number"  [(ngModel)]="User.state" matInput [formControl]="Control1" [matAutocomplete]="auto1">
+                                        <mat-autocomplete #auto1="matAutocomplete">
+                                          <mat-option *ngFor="let state of filteredstates | async" [value]="state">
+                                            {{ state }}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                      </mat-form-field>
+                        
+                      </div>
+                      <div class="sub1">
+                          
+                                      <mat-form-field class="mat">
+                                            <input type="text" placeholder="Country" aria-label="Number"  [(ngModel)]="User.country" matInput [formControl]="Control3" [matAutocomplete]="auto4">
+                                            <mat-autocomplete #auto4="matAutocomplete">
+                                              <mat-option *ngFor="let country of filteredcountries | async" [value]="country">
+                                                {{ country }}
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                        </mat-form-field>
+                            
+                                    <mat-form-field >
+                                            <input matInput #input maxlength="6" [(ngModel)]="User.pincode" placeholder="PinCode">
+                                           </mat-form-field>
+                                </div>
+                              <div>
+                                  <button mat-raised-button color="primary" matStepperNext>Next</button>
+                              </div>
+                    
+      
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Health Info</ng-template>
+              
+                      <div class="sub1">
+                          <mat-form-field class="mat" color="accent">
+                              <input matInput  [(ngModel)]="User.height" placeholder="Height (ft/cms)" >
+                            </mat-form-field>
+                          <mat-form-field color="accent" >
+                              <input matInput  [(ngModel)]="User.weight" placeholder="Weight ( kg/lbs)" >
+                          </mat-form-field>
+                      </div>
+                  
+                      <div class="sub4">
+                      <div class="sub1">
+                              <mat-form-field class="mat" color="accent">
+                                  <input matInput  [(ngModel)]="User.allergicto" placeholder="Allergic to" >
+                                </mat-form-field>
+                              </div>
+                              </div>
+                     
+                        
+                         
+              <div>
+                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </div>
+        
+          </mat-step>
+          <mat-step>
+              <ng-template matStepLabel>Health information - Personal Habits:</ng-template>
+              <section class="example-section">
+                  <label class="example-margin">1) Do you smoke? </label>
+                  <mat-radio-group [(ngModel)]="User.smoke">
+                    <mat-radio-button class="go" value="yes">Yes</mat-radio-button>
+                    <mat-radio-button class="go1" value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </section>
+                <section class="example-section">
+                  <label class="example-margin"> 2) Do you use tobacco? </label>
+                  <mat-radio-group [(ngModel)]="User.tobacco">
+                    <mat-radio-button class="so" value="yes">Yes</mat-radio-button>
+                    <mat-radio-button class="so1" value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </section>
+                <section class="example-section">
+                  <label class="example-margin"> 3) Do you drink alcohol? </label>
+                  <mat-radio-group [(ngModel)]="User.alcohol">
+                    <mat-radio-button class="ro" value="yes">Yes</mat-radio-button>
+                    <mat-radio-button class="ro1" value="no">No</mat-radio-button>
+                  </mat-radio-group>
+                </section>
+                <div>
+                  <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                  <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+              </mat-step>
+          <mat-step>
+                          
+                    <ng-template matStepLabel>Insurance Info</ng-template>
+                    
+                            <div class="sub1">
+                                <mat-form-field class="mat" color="accent">
+                                    <input matInput [(ngModel)]="User.insuranceprovidername" placeholder="Insurance Provider Name">
+                                  </mat-form-field>
+                                <mat-form-field color="accent">
+                                    <input matInput [(ngModel)]="User.policyholdername" placeholder="Policy holder name">
+                                </mat-form-field>
+                            </div>
+                            <div class="sub1">
+                                    <mat-form-field class="mat" color="accent">
+                                        <input matInput [(ngModel)]="User.policyno" placeholder="Policy No" >
+                                      </mat-form-field>
+                                      <mat-form-field color="accent">
+                                        <input matInput [matDatepicker]="picker" [(ngModel)]="User.policyissuancedate" placeholder="Policy issuance date(dd/MM/YYYY)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                    
+                                </div>
+                              
+                               
+                    <div>
+                      <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                     
+                      <button mat-raised-button color="primary" (click)="showSuccess()" (click)="call()"type="submit">Submit</button>
+                  </div>
+      
+                </mat-step>
+         
+      </mat-horizontal-stepper>
+      </mat-card>  
+  </div>
+  
+  <div *ngIf="user.role=='Lab'">
+   
+  </div>
+  
+  <div *ngIf="user.role=='LabAssist'">
+    <mat-card>
+        <mat-toolbar>
+          <mat-toolbar-row>
+            <span>DETAILS</span>
+            <span class="spacer"></span>
+            <mat-icon id="icon" (click)="disabled = !disabled">edit</mat-icon>
+        </mat-toolbar-row>
+      </mat-toolbar>
+        
+      <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+      <mat-step> 
+           <ng-template matStepLabel>Basic Details</ng-template>
+      <div class="sub1">
+        <mat-form-field class="mat" color="accent">
+          <input matInput name="Firstname"  [(ngModel)]="lab.lfirstname" placeholder="Firstname" >
+        </mat-form-field>
+        <mat-form-field color="accent" >
+          <input matInput  [(ngModel)]="lab.llastname" placeholder="Lastname" >
+        </mat-form-field>
+      </div>
+      
+      <div class="sub1">
+        <mat-form-field  class="mat" color="accent">
+          <input matInput  [(ngModel)]="lab.lemail" placeholder="Email">
+        </mat-form-field>
+       <mat-form-field class="mat" color="accent">
+       <input matInput #input maxlength="10" [(ngModel)]="lab.lphone"placeholder="Phone">
+        </mat-form-field>
+        
+       
+      </div>
+      <div  class="sub1">
+            <label for="file">Please Upload Your Profile</label>
+            <input type="file" (change)="handleFileSelect($event)">
+            </div>
+            <div class="sub2">
+            <input [ngModel]="lab.lpic" placeholder="upload picture">
+     </div>
+    
+                          
+      
+      <div class="sub1">
+          <mat-form-field  class="mat" color="accent">
+              <textarea matInput  [(ngModel)]="lab.laddress" placeholder="Address"></textarea>
+             </mat-form-field>
+             <mat-form-field  class="mat" color="accent">
+              <input matInput  [(ngModel)]="lab.larea" placeholder="Area"  >
+             </mat-form-field>   
+       </div>
+      
+      
+      <div class="sub1" >
+        <mat-form-field class="mat" color="accent">
+        <mat-select placeholder="City" [(value)]="lab.lcity">
+          <mat-option value="Chennai">Chennai</mat-option>
+          <mat-option value="Madurai">Madurai</mat-option>
+          <mat-option value="Vellore">Vellore</mat-option>
+          <mat-option value="Vellore">Tirupati</mat-option>
+        </mat-select>
+        </mat-form-field>
+      
+        <mat-form-field color="accent">
+        <mat-select placeholder="State" [(value)]="lab.lstate">
+          <mat-option value="Bihar">Andhra Pradesh</mat-option>
+          <mat-option value="Assam">Assam</mat-option>
+          <mat-option value="Bihar">Bihar</mat-option>
+          <mat-option value="Goa">Goa</mat-option>
+          <mat-option value="Gujarat">Gujarat</mat-option>
+          <mat-option value="Jammu and Kashmir">Jammu and Kashmir</mat-option>
+          <mat-option value="Tamil Nadu">Tamil Nadu</mat-option>
+          <mat-option value="Telangana">Telangana</mat-option>
+          <mat-option value="Karnataka">Karnataka</mat-option>
+          <mat-option value="Kerala">Kerala</mat-option>
+         </mat-select>
+        </mat-form-field>
+      </div>
+      
+      <div class="sub1">
+        <mat-form-field class="mat" color="accent">
+        <mat-select placeholder="Country" [(value)]="lab.lcountry">
+          <mat-option value="Algeria">Algeria</mat-option>
+          <mat-option value="Bangladesh">Bangladesh</mat-option>
+          <mat-option value="Cambodia">Cambodia</mat-option>
+          <mat-option value="Denmark">Denmark</mat-option>
+          <mat-option value=" Greece">Greece</mat-option>
+          <mat-option value="India"> India </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <input matInput #input maxlength="6" [(ngModel)]="lab.lpincode" placeholder="PinCode">
+     </mat-form-field>
+      </div>
+      
+       <div>
+        <button mat-raised-button color="primary" matStepperNext>Next</button>
+      </div>
+      </mat-step>
+      
+      
+      <mat-step>
+        <ng-template matStepLabel>Professional Details</ng-template>
+      <div class="sub1">
+       <mat-form-field class="mat" color="accent">
+        <input matInput  [(ngModel)]="lab.leducationdetails" placeholder="Education Details" >
+       </mat-form-field>
+      <mat-form-field color="accent" >
+        <input matInput  [(ngModel)]="lab.lcertificateno" placeholder="Certificate No" >
+      </mat-form-field>
+      </div>
+      
+      <div class="sub1">
+      <mat-form-field class="mat" color="accent">
+        <input matInput  [(ngModel)]="lab.lspecialist" placeholder="Specialization">
+      </mat-form-field>
+      <mat-form-field class="mat" color="accent">
+            <input matInput  [(ngModel)]="lab.lregistrationno" placeholder="Registration No">
+          </mat-form-field>
+      </div>
+      
+   
+      
+      <div class="sub1">
+      <mat-form-field class="mat" color="accent">
+       <input matInput  [(ngModel)]="lab.lyearsofexperience" placeholder="Years of Experience" >
+      </mat-form-field>
+      
+      </div>
+              
+      <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary"(click)="showSuccess()" (click)="callLab()"type="submit">Submit</button>
+      </div>
+          
+      </mat-step>
+          
+      </mat-horizontal-stepper>
+      </mat-card>  
+  </div>
+  
+  <div *ngIf="user.role=='Padmin'">
+
+    <mat-card>
+        <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+                <mat-step >
+                    
+                    <ng-template matStepLabel>"Pharmacy Profile Form</ng-template>
+                     <div class="sub1">
+                        <mat-form-field class="mat" color="accent">
+                            <input type="text" matInput [(ngModel)]="pharmacy.pfirstname" placeholder="Firstname"  >
+                          </mat-form-field>
+                         
+                        <mat-form-field color="accent" >
+                            <input  type="text" matInput  [(ngModel)]="pharmacy.plastname" placeholder="Lastname" >
+                        </mat-form-field>
+                 </div>
+                     <div class="sub2">
+                         
+                        <mat-form-field  class="mat" color="accent">
+                            <input matInput [(ngModel)]="pharmacy.pemail" placeholder="Email" >
+                          </mat-form-field>
+                        
+                    </div>
+                     <div  class="sub1">
+                         <label for="file">Please Upload Your Profile</label>
+                          <input type="file" (change)="handleFileSelect($event)">
+                          </div>
+                          <div class="sub2">
+                          <mat-form-field color="accent">
+                          <input matInput [ngModel]="pharmacy.ppic" placeholder="Upload picture">
+                        </mat-form-field>
+                          </div>
+                  
+                        <div class="sub2">
+                                <mat-form-field color="accent" >
+                                        <input matInput #input maxlength="10"  [(ngModel)]="pharmacy.pmobile" placeholder="Mobile">
+                                       </mat-form-field>
+                            
+                            
+                        </div>
+                     
+                        <div class="sub1">
+                            
+                           
+                        </div>
+                  
+                    <div class="sub4">
+                        <div class="sub1">
+                            <mat-form-field color="accent">
+                                <textarea matInput [(ngModel)]="pharmacy.paddress" placeholder="Address" ></textarea>
+                            </mat-form-field>
+                            </div>
+                            <div class="sub2">
+                                <mat-form-field>
+                                    <input type="text" placeholder="Area" aria-label="Number"   [(ngModel)]="pharmacy.parea" matInput [formControl]="Control2" [matAutocomplete]="auto3">
+                                    <mat-autocomplete #auto3="matAutocomplete">
+                                      <mat-option *ngFor="let area of filteredareas | async" [value]="area">
+                                        {{ area }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                          </div>
+                      <div class="sub1" >
+                            <mat-form-field class="mat">
+                                    <input type="text" placeholder="City" aria-label="Number" [(ngModel)]="pharmacy.pcity" matInput [formControl]="myControl1" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option *ngFor="let city of filteredcities | async" [value]="city">
+                                        {{ city }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                                  <mat-form-field >
+                                        <input type="text" placeholder="State" aria-label="Number"  [(ngModel)]="pharmacy.pstate" matInput [formControl]="Control1" [matAutocomplete]="auto1">
+                                        <mat-autocomplete #auto1="matAutocomplete">
+                                          <mat-option *ngFor="let state of filteredstates | async" [value]="state">
+                                            {{ state }}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                      </mat-form-field>
+                        
+                      </div>
+                      <div class="sub1">
+                          
+                                      <mat-form-field class="mat">
+                                            <input type="text" placeholder="Country" aria-label="Number"  [(ngModel)]="pharmacy.pcountry" matInput [formControl]="Control3" [matAutocomplete]="auto4">
+                                            <mat-autocomplete #auto4="matAutocomplete">
+                                              <mat-option *ngFor="let country of filteredcountries | async" [value]="country">
+                                                {{ country }}
+                                              </mat-option>
+                                            </mat-autocomplete>
+                                          </mat-form-field>
+                                  <mat-form-field color="accent" >
+                                        <input matInput #input maxlength="6"  [(ngModel)]="pharmacy.ppincode" placeholder="PinCode">
+                                       </mat-form-field>
+                                
+                                </div>
+                                <div>
+                                    <button  mat-raised-button color="primary" matStepperNext>Next</button>
+                                    
+                                  </div>
+                            </div>
+                         
+                          
+                           
+            
+                        </mat-step>
+                        
+                           <mat-step >
+                    
+                                <ng-template matStepLabel>"Pharmacy Proffession Form"</ng-template>
+                      
+                          
+                            <div class="sub1">
+                              <mat-form-field class="mat" color="accent">
+                                <input matInput  [(ngModel)]="pharmacy.peducationdetails"placeholder="Education Details">
+                              </mat-form-field>
+                              <mat-form-field color="accent">
+                                <input matInput type="number"[(ngModel)]="pharmacy.pcertificateno" placeholder="Certificate No" >
+                              </mat-form-field>
+                        </div>
+                        <div class="sub1">
+                            <mat-form-field class="mat"color="accent">
+                                <mat-select placeholder="Specialization" [(value)]="pharmacy.pspecialization" >
+                                    <mat-option value="Dentist">Dentist</mat-option>
+                                    <mat-option value="Cardiologist">Cardiologist</mat-option>
+                                    <mat-option value="Opthalmologist">Opthalmologist</mat-option>
+                                    <mat-option value="pediatrician">pediatrician</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                          <mat-form-field color="accent" >
+                             <input matInput type="number" [(ngModel)]="pharmacy.pregistrationno" placeholder="Registration No">
+                          </mat-form-field>
+                        </div>
+                        <div class="sub2">
+                                <mat-form-field class="mat" color="accent">
+                                   <input matInput  [(ngModel)]="pharmacy.pyearofexperience" placeholder="Year of Experience" >
+                                </mat-form-field>
+                                </div>
+                         <div>
+                                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                               <button mat-raised-button color="primary"(click)="showSuccess()" (click)="callPhar()"type="submit">Submit</button>
+                         </div>
+                   </mat-step>
+                </mat-horizontal-stepper>
+            </mat-card>
+  </div>

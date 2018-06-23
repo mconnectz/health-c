@@ -1,0 +1,31 @@
+
+<mat-card>
+  <div class="example-container">
+    <h3>Patient Report</h3>
+    <mat-form-field>
+      <input matInput [(ngModel)]="report.patientId" placeholder="Patient Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [(ngModel)]="report.prescribeddoctorId" placeholder="Prescribed Doctor Id">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="report.dateoftest" placeholder="Date of Test">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input type="text" [(ngModel)]="report.typeoftest" placeholder="Type of Test" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let test of filteredTests | async" [value]="test">
+        {{ test }}
+      </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  
+  <div>
+    <button mat-raised-button color="primary" (click)="showSuccess()" (click)="edit(report)">Update</button>
+    <a class="btn btn-info" (click)="goBack()">Cancel</a> 
+  </div>
+  </mat-card>
+  

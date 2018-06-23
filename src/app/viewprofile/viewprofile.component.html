@@ -1,0 +1,171 @@
+<div *ngIf="user.role=='Sadmin'">
+  Hello {{user.username}}, welcome SuperAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Hadmin'">
+  Hello {{user.username}}, welcome HospitalAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Ladmin'">
+  Hello {{user.username}}, welcome LabAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Padmin'">
+  Hello {{user.username}}, welcome PharmAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Patient'">
+  Hello {{user.username}}, welcome Doctor.
+  </div>
+  
+  <mat-toolbar>Relation:{{pat.relationship}}</mat-toolbar>
+  <mat-card>
+      <div class="cardheader">
+          <h2> PATIENT PROFILE DETAILS</h2>
+          <div class="avatar" align="right">
+      
+          <img width="150" height="150" [src]="'data:image/jpg;base64,'+pat.photo">
+          <h4><span><strong>{{pat.firstname}}</strong></span></h4>
+        </div>
+    </div>
+    <div class="line"></div>      
+    <div class="container">
+        <table class="table table-bordered table-hover table-responsive" align="center">
+            <colgroup>
+              <col span="1" style="width: 25%;">
+              <col span="1" style="width: 75%;">
+            </colgroup>
+            <tr>
+              <td>Firstname:</td>
+             <td>{{pat.firstname}}</td>
+         </tr>
+       
+         <tr>
+           <td>Lastname:</td>
+             <td>{{pat.lastname}}</td>
+           </tr>
+         
+           <tr>
+           <td>Email:</td>
+           <td>{{pat.email}}</td>
+           </tr>
+       
+          <tr>
+          <td>Mobile number:</td>
+          <td>{{pat.mobile}}</td>
+           </tr>
+           
+          <tr>
+              <td>Date of birth:</td>
+              <td>{{pat.dob | date: 'dd'}}/{{pat.dob | date: 'MM'}}/{{pat.dob | date: 'yyyy'}}</td>
+               </tr>
+          
+           <tr>
+           <td>Blood group:</td>
+           <td>{{pat.bloodgroup}}</td>
+           </tr>
+      
+          <tr>
+          <td>Gender:</td>
+          <td>{{pat.gender}}</td>
+           </tr>
+          
+           <tr>
+            <td>Address:</td>
+           <td>{{pat.address}}</td>
+       </tr>
+  
+       <tr>
+         <td>City:</td>
+           <td>{{pat.city}}</td>
+         </tr>
+      
+         <tr>
+         <td>State:</td>
+         <td>{{pat.state}}</td>
+         </tr>
+     
+        <tr>
+        <td>Country:</td>
+        <td>{{pat.country}}</td>
+         </tr>
+    
+        <tr>
+        <td>Pincode:</td>
+        <td>{{pat.pincode}}</td>
+         </tr>
+         </table>
+    </div>
+   
+    <div class="container">
+     <h3>Personal details</h3>
+        <table class="table  table-bordered table-hover table-responsive" align="center">                               
+            <colgroup>
+              <col span="1" style="width: 25%;">
+              <col span="1" style="width: 75%;">
+            </colgroup>   
+          <tr>
+            <td>Height (ft/cms):</td>
+           <td>{{pat.height}}</td>
+       </tr>
+     
+       <tr>
+         <td>Weight ( kg/lbs):</td>
+           <td>{{pat.weight}}</td>
+         </tr>
+        
+         <tr>
+         <td>Allergic To:</td>
+         <td>{{pat.allergicto}}</td>
+         </tr>
+        
+        <tr>
+        <td>Do you smoke?</td>
+        <td>{{pat.smoke}}</td>
+         </tr>
+         <tr>
+          <td>Do you use tobacco?</td>
+         <td>{{pat.tobacco}}</td>
+     </tr>
+     
+     <tr>
+       <td>Do you drink alcohol?</td>
+         <td>{{pat.alcohol}}</td>
+       </tr>
+      
+       <tr>
+       <td>Insurance Provider Name:</td>
+       <td>{{pat.insuranceprovidername}}</td>
+       </tr>
+   
+      <tr>
+      <td>Policy holder name:</td>
+      <td>{{pat.policyholdername}}</td>
+       </tr>
+       
+      <tr>
+      <td>Policy No:</td>
+      <td>{{pat.policyno}}</td>
+       </tr>
+    
+      <tr>
+      <td>Policy issuance date:</td>
+      <td>{{pat.policyissuancedate | date: 'dd'}}/{{pat.policyissuancedate | date: 'MM'}}/{{pat.policyissuancedate | date: 'yyyy'}}</td>
+       </tr>
+         </table>
+    </div>
+</mat-card>
+  
+  <div *ngIf="user.role=='Lab'">
+  Hello {{user.username}}, welcome Lab.
+  </div>
+  
+  <div *ngIf="user.role=='LabAssist'">
+  Hello {{user.username}}, welcome LabAssist.
+  </div>
+  
+  <div *ngIf="user.role=='Pharmacy'">
+  Hello {{user.username}}, welcome Pharmacy.
+  </div>
+
+  

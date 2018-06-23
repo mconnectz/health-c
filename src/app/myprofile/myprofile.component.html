@@ -1,0 +1,368 @@
+<div *ngIf="user.role=='Sadmin'">
+  Hello {{user.username}}, welcome SuperAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Hadmin'">
+  Hello {{user.username}}, welcome HospitalAdmin.
+  </div>
+ 
+  
+ 
+  
+  <div *ngIf="user.role=='Doctor'">
+      <mat-card class="cardheader">
+      
+      <div class="cardheader">
+        
+        <h2> DOCTOR PROFILE DETAILS</h2>
+        <button mat-icon-button style="float:right" color="accent" routerLink="/profile">
+      
+          <mat-icon  aria-label="Edit">edit</mat-icon>
+  
+        </button>
+
+          <div class="avatar" align="right">
+            <img width="150" height="150" [src]="'data:image/jpg;base64,'+dprofiles.dphoto">
+            <h4><span><strong>{{dprofiles.dfirstname}}</strong></span></h4>
+          </div>
+      </div>
+      
+      <div class="line"></div>
+     <div class="container">
+      <table class="table  table-bordered table-hover table-responsive" align="center">
+        
+            <colgroup>
+              <col span="1" style="width: 25%;">
+              <col span="1" style="width: 75%;">
+            </colgroup>
+          <tr>
+            <td>Firstname:</td>
+            <td>{{dprofiles.dfirstname}}</td>
+          </tr>
+          <tr>
+            <td>Lastname:</td>
+            <td>{{dprofiles.dlastname}}</td>
+          </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{dprofiles.demail}}</td>
+          </tr>
+          <tr>
+            <td>Phone number:</td>
+            <td>{{dprofiles.dmobile}}</td>
+          </tr>
+          <tr>    
+            <td>Address:</td>
+            <td>{{dprofiles.daddress}}</td>
+          </tr>
+          <tr>          
+            <td>Area:</td>
+            <td>{{dprofiles.darea}}</td>
+          </tr>
+          <tr>
+            <td>City:</td>
+            <td>{{dprofiles.dcity}}</td>
+          </tr>
+          <tr>
+            <td>State:</td>
+            <td>{{dprofiles.dstate}}</td>
+          </tr>
+          <tr>
+            <td>Country:</td>
+            <td>{{dprofiles.dcountry}}</td>
+          </tr>
+          <tr>
+            <td>Pincode:</td>
+            <td>{{dprofiles.dpincode}}</td>
+          </tr>
+        
+      </table>
+     </div>
+     
+     <div class="container">
+        <h3>Professional details</h3>
+      <table class="table  table-bordered table-hover table-responsive" align="center">                              
+          <colgroup>
+            <col span="1" style="width: 25%;">
+            <col span="1" style="width: 75%;">
+          </colgroup>
+        <tr>
+          <td>Education Details:</td>
+          <td>{{dprofiles.deducationdetails}}</td>
+        </tr>
+        <tr>
+         <td>Certificate No:</td>
+         <td>{{dprofiles.dcertificateno}}</td>
+        </tr>
+      <tr>
+        <td>Specialist:</td>
+        <td>{{dprofiles.dspecialist}}</td>
+      </tr>
+      <tr>
+        <td>Registration No:</td>
+        <td>{{dprofiles.dregistrationno}}</td>
+      </tr>
+      <tr>
+       <td>Years of Experience:</td>
+       <td>{{dprofiles.dyearsofexperience}}</td>
+      </tr>                  
+      </tbody>
+      </table>
+     </div>
+     </mat-card>
+     </div>
+  
+
+     <div *ngIf="user.role=='Patient'">
+      <div class="mat-elevation-z8 center" >
+          <div class="example-header">
+              <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+              </mat-form-field>
+            </div>
+    
+          <mat-table #table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+            <ng-container matColumnDef="firstname">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Firstname </mat-header-cell>
+              <mat-cell *matCellDef="let p"> {{p.firstname}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="relationship">
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Relationship</mat-header-cell>
+              <mat-cell *matCellDef="let p"> {{p.relationship}} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="gender">
+              <mat-header-cell *matHeaderCellDef  mat-sort-header>Gender </mat-header-cell>
+              <mat-cell *matCellDef="let p"> {{p.gender}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+        
+              <mat-cell *matCellDef="let p">
+                  <button mat-icon-button color="primary" routerLink="/viewprofile/{{p._id}}">
+                      <mat-icon aria-label="View">visibility</mat-icon>
+                    </button>
+                <button mat-icon-button color="accent" routerLink="/editprofile/{{p._id}}">
+                  <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+        
+                <button mat-icon-button color="warn"(click)="profdelete(p._id)">
+                  <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+               
+              </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        
+         <mat-paginator 
+          [length]="dataSource.resultsLength"
+          [pageSize]="5" 
+          [pageSizeOptions]="[1, 2, 3, 5]">
+         </mat-paginator>
+        
+        </div>
+      </div>
+    
+
+  
+
+  
+  <div *ngIf="user.role=='Ladmin'">
+    <mat-card>
+   <div class="cardheader">
+      <h2>PROFILE DETAILS</h2>
+      <button mat-icon-button style="float:right" color="accent" routerLink="/profile">
+      
+        <mat-icon  aria-label="Edit">edit</mat-icon>
+
+      </button>
+      <div class="avatar" align="right">
+        <img width="150" height="150" [src]="'data:image/jpg;base64,'+labprofiles.lphoto">
+        <h4><span><strong>{{labprofiles.lfirstname}}</strong></span></h4>
+      </div>
+   </div>
+   
+   <div class="line"></div>
+   <div class="container">
+    <table class="table  table-bordered table-hover table-responsive" align="center">
+        
+            <colgroup>
+              <col span="1" style="width: 25%;">
+              <col span="1" style="width: 75%;">
+            </colgroup>
+          <tr>
+            <td>Firstname:</td>
+            <td>{{labprofiles.lfirstname}}</td>
+          </tr>
+          <tr>
+              <td>Lastname:</td>
+              <td>{{labprofiles.llastname}}</td>
+             </tr>
+          <tr>
+            <td>Email:</td>
+            <td>{{labprofiles.lemail}}</td>
+            </tr>
+             <tr>
+                <td>Phone number:</td>
+                <td>{{labprofiles.lphone}}</td>
+              </tr>
+                  <tr>    
+                      <td>Address:</td>
+                      <td>{{labprofiles.laddress}}</td>
+                      </tr>
+                      <tr>          
+                          <td>Area:</td>
+                          <td>{{labprofiles.larea}}</td>
+                          </tr>
+                          <tr>
+                              <td>City:</td>
+                              <td>{{labprofiles.lcity}}</td>
+                              </tr>
+                              <tr>
+                <td>State:</td>
+              <td>{{labprofiles.lstate}}</td>
+          </tr>
+        <tr>
+            <td>Country:</td>
+                <td>{{labprofiles.lcountry}}</td>
+              </tr>
+              <tr>
+                  <td>Pincode:</td>
+                  <td>{{labprofiles.lpincode}}</td>
+                </tr>
+              
+                </table>
+                </div>
+                <div class="container">
+                    <h3>Professional details</h3>
+                <table class="table  table-bordered table-hover table-responsive" align="center">                              
+                    <colgroup>
+                      <col span="1" style="width: 25%;">
+                      <col span="1" style="width: 75%;">
+                    </colgroup>
+          
+          <tr>
+          <td>Education Details:</td>
+           <td>{{labprofiles.leducationdetails}}</td>
+          </tr>
+          <tr>
+          <td>Certificate No:</td>
+          <td>{{labprofiles.lcertificateno}}</td>
+          </tr>
+          <tr>
+            <td>Specialist:</td>
+            <td>{{labprofiles.lspecialist}}</td>
+            </tr>
+        <tr>
+        <td>Years of Experience:</td>
+        <td>{{labprofiles.lyearsofexperience}}</td>
+        </tr>                  
+          </tbody>
+        </table>
+      </div>
+      </mat-card>
+    </div>
+
+
+  
+  <div *ngIf="user.role=='Padmin'">
+ <mat-card>
+ <div class="cardheader">
+ <h2>Pharmacist Profile Details:</h2>
+ <button mat-icon-button style="float:right" color="accent" routerLink="/profile">
+      
+  <mat-icon  aria-label="Edit">edit</mat-icon>
+
+</button>
+ <div class="avatar">
+ <img width="150" height="150" [src]="'data:image/jpg;base64,'+pharprofiles.pphoto">
+ <h4><span><strong>{{pharprofiles.pfirstname}}</strong></span></h4>
+ </div>
+ </div>
+
+<div class="line"></div> 
+<div class="container">
+ <table class="table  table-bordered table-hover table-responsive" align="center">
+    <colgroup>
+      <col span="1" style="width: 25%;">
+      <col span="1" style="width: 75%;">
+    </colgroup>
+ <tr>
+  <td>Firstname:</td>
+  <td>{{pharprofiles.pfirstname}}</td>
+</tr>
+<tr>
+ <td>Lastname:</td>
+<td>{{pharprofiles.plastname}}</td>
+</tr>
+ <tr>
+ <td>Email:</td>
+ <td>{{pharprofiles.pemail}}</td>
+</tr>
+<tr>
+ <td>Mobile number:</td>
+ <td>{{pharprofiles.pmobile}}</td>
+</tr>
+ <tr>
+   <td>Address:</td>
+   <td>{{pharprofiles.paddress}}</td>
+ </tr>
+ <tr>
+<td>Area:</td>
+<td>{{pharprofiles.parea}}</td>
+</tr>
+<tr>
+ <td>City:</td>
+ <td>{{pharprofiles.pcity}}</td>
+</tr>
+<tr>
+ <td>State:</td>
+ <td>{{pharprofiles.pstate}}</td>
+</tr>
+<tr>
+ <td>Country:</td>
+ <td>{{pharprofiles.pcountry}}</td>
+</tr>
+<tr>
+<td>Pincode:</td>
+<td>{{pharprofiles.ppincode}}</td>
+</tr>
+</table>
+</div>
+
+<div class="container">
+   <h3>Professional details</h3>
+ <table class="table  table-bordered table-hover table-responsive" align="center">                              
+    <colgroup>
+      <col span="1" style="width: 25%;">
+      <col span="1" style="width: 75%;">
+    </colgroup>
+ <tr>
+ <td>Education Details:</td>
+ <td>{{pharprofiles.peducationdetails}}</td>
+</tr>
+<tr>
+ <td>Certificate No:</td>
+ <td>{{pharprofiles.pcertificateno}}</td>
+</tr>
+<tr>
+<td>Specialization:</td>
+<td>{{pharprofiles.pspecialization}}</td>
+</tr>
+<tr>
+<td>Registration No:</td>
+<td>{{pharprofiles.pregistrationno}}</td>
+</tr>
+<tr>
+ <td>Years of Experience:</td>
+ <td>{{pharprofiles.pyearofexperience}}</td>
+</tr>
+</table>
+</div>
+</mat-card>
+</div>
+  
+

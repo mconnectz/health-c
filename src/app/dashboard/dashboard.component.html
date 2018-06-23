@@ -1,0 +1,157 @@
+<div *ngIf="user.role=='Sadmin'">
+    Hello {{user.username}}, welcome Super Admin.
+</div>
+    
+<div *ngIf="user.role=='Hadmin'">
+    Hello {{user.username}}, welcome Hospital Admin.
+</div>
+    
+<div *ngIf="user.role=='Ladmin'">
+    <h3>Hello <span>{{user.username}}</span>, Welcome Lab Admin.</h3>
+    <div class="flex-container">
+      <div class="rev">
+      <h3>0</h3>
+       <p>Today's Appointment</p>
+       <mat-icon>language</mat-icon>
+      </div>
+    <div class="rev1">
+         <h3>0</h3>
+         <p>Total Appointment</p>
+         <mat-icon>today</mat-icon>
+    </div>
+    <div class="rev5">
+        <h3>0</h3>
+        <p>Today's Earn</p>
+        <mat-icon>stars</mat-icon>
+    </div> 
+     </div> 
+    <div class="flex-container">
+     <div class="rev3">
+         <h3>0</h3>
+         <p>Today's Patient Count</p>
+         <mat-icon>language</mat-icon>
+     </div>
+        <div class="rev4">
+           <h3>{{pharmcounts}}</h3>
+           <p>Total reports</p>
+           <mat-icon>today</mat-icon>
+      </div>
+    </div>
+</div>
+
+<div *ngIf="user.role=='Padmin'">
+    <h3>Hello <span>{{user.username}}</span>, welcome Pharma Admin.</h3>
+    <div class="flex-container">
+     <div class="rev">
+       <h3>0</h3>
+       <p>Total Stock</p>
+       <mat-icon>language</mat-icon>
+      </div>
+     <div class="rev1">
+         <h3>0</h3>
+         <p>Total Appointment</p>
+         <mat-icon>today</mat-icon>
+    </div>
+      <div class="rev2">
+         <h3>{{pharmcounts}}</h3>
+         <p>Total prescription</p>
+         <mat-icon>stars</mat-icon>
+        </div>  
+    </div> 
+     <div class="flex-container">
+      <div class="rev3">
+         <h3>0</h3>
+         <p>Today's prescription</p>
+         <mat-icon>language</mat-icon>
+     </div>
+        <div class="rev5">
+           <h3>0</h3>
+           <p>Today's Earn</p>
+           <mat-icon>stars</mat-icon>
+        </div>  
+     </div>
+</div>
+    
+<div *ngIf="user.role=='Doctor'">
+   <h3>Hello <span>{{user.username}}</span>, Welcome Doctor.</h3>
+    <div class="flex-container">
+       <div class="rev">
+         <h3>0</h3>
+         <p>Today's Appointment</p>
+         <mat-icon>language</mat-icon>
+        </div>
+       <div class="rev1">
+           <h3>0</h3>
+           <p>Total Appointment</p>
+           <mat-icon>today</mat-icon>
+      </div>
+       <div class="rev2">
+           <h3>0</h3>
+           <p>Today's prescription</p>
+           <mat-icon>stars</mat-icon>
+          </div>  
+      </div> 
+        <div class="flex-container">
+        <div class="rev3">
+           <h3>{{pharmcounts}}</h3>
+           <p>Total prescription</p>
+           <mat-icon>language</mat-icon>
+       </div>
+         <div class="rev4">
+             <h3>0</h3>
+             <p>Today's Patient</p>
+             <mat-icon>today</mat-icon>
+           </div>
+        <div class="rev5">
+             <h3>{{pharmcounts}}</h3>
+             <p>Total patient</p>
+             <mat-icon>stars</mat-icon>
+       </div>  
+       <div class="rev6">
+        <h3>0</h3>
+        <p>Today's Earn</p>
+        <mat-icon>stars</mat-icon>
+       </div>  
+       </div>
+</div>
+    
+    
+<div *ngIf="user.role=='Patient'">
+    <h3>Hello <span> {{user.username}}</span>, welcome User.</h3>
+    <div class="flex-container">
+    <div class="rev">
+         <h3>0</h3>
+         <p>Today's Appointment</p>
+         <mat-icon>language</mat-icon>
+        </div>
+      <div class="rev1">
+           <h3>0</h3>
+           <p>Total Appointment </p>
+           <mat-icon>today</mat-icon>
+      </div>
+       <div class="rev2">
+           <h3>{{pharmcounts}}</h3>
+           <p>Total prescription</p>
+           <mat-icon>stars</mat-icon>
+          </div>  
+      </div> 
+      <div class="flex-container">
+        <div class="rev3">
+           <h3>0</h3>
+           <p>Today's prescription</p>
+           <mat-icon>language</mat-icon>
+       </div>
+         <div class="rev4">
+             <h3>{{profile}}</h3>
+             <p>Total Profiles </p>
+             <mat-icon>today</mat-icon>
+           </div>
+      </div>
+</div>
+    
+<div *ngIf="user.role=='Lab'">
+    Hello {{user.username}}, welcome Lab.
+</div>
+    
+    
+    

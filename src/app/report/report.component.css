@@ -1,0 +1,58 @@
+.mat-table {
+    overflow: auto;  
+    max-height: 500px;
+    margin-left:20px;
+    margin-right:20px;
+  }
+  .mat-row:hover{
+   background-color:#EDE7F6;
+  }
+      .example-header {
+        min-height: 64px;
+        padding: 8px 24px 0;
+      }
+      
+      .mat-form-field {
+        font-size: 14px;
+        width: 100%;
+      }
+       .mat-header-row{
+        background-color:#7986CB;
+        color:#fff;
+      }
+      .mat-header-row,.mat-row{
+        border-bottom-color:#D7CCC8;
+      }
+      .mat-paginator{
+        color:#7986CB;
+        margin-left:20px;
+        margin-right:20px;
+      }
+      .mat-header-cell{
+        color:white;
+        font-family:verdana;
+        font-style:normal;
+      }
+      .btn{
+        width:79px;
+        margin-left:5px;
+        
+       }
+       .btn-success{
+        background-color:rgb(17, 53, 17);
+        color:white;
+       }
+       .btn-info{
+        background-color:rgb(25, 25, 134);
+       color:white;
+       }
+       .btn-danger{
+       background-color:rgb(170, 60, 60);
+       color:white;
+       }
+       thead{
+        background-color:#5C6BC0;
+       }
+       .container{
+           margin-top:20px;
+       }

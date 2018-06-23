@@ -1,0 +1,43 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+.fxcontainer {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .mobile .toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+  
+  h1.name {
+    margin-left: 5px;
+  }
+  
+  .sidenav-container {
+    flex: 1;
+  }
+
+  button,h1{
+    font-family: 'Myriad Pro Bold';
+
+  }
+  .mat-drawer{
+    background-color:grey;
+   
+   }
+   .mat-nav-list .mat-list-item{
+    color:white;
+   }
+.mat-toolbar{
+  background-color:black;
+}
+.col{
+  background-color:grey
+}

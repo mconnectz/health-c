@@ -1,0 +1,67 @@
+<!--<div class="container">
+ 
+  <span typingAnimation [typeSpeed]="50" [condition]="start" [startDelay]="500" [hideCursorOnComplete]="true">
+   Welcome to Healthcare101
+  </span>
+  <br>
+  <div class="box">
+    <button mat-raised-button routerLink="/login">LOGIN</button>
+    <button mat-raised-button color="accent" routerLink="/register">REGISTER</button>
+  </div>
+
+ </div>-->
+
+
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+<div class="navbar-header">
+                  <a class="navbar-brand" href="#"><i class="fa fa-medkit"></i> HC1010</a>
+                </div>
+    <ul class="nav navbar-nav navbar-right">
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">HealthCare <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Hospital</a></li>
+          
+          <li><a href="loginlabad">Laboratory</a></li>
+       
+          <li><a href="loginpharad">Pharmacy</a></li>
+        
+        </ul>
+      </li>
+     
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Login<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li><a href="#">Pathologist</a></li>
+            <li><a href="logindoctor">Doctor</a></li>
+            <li><a href="loginpharad">Pharmacist</a></li>
+
+            
+          </ul>
+        </li>
+        <button class="btn btn-danger navbar-btn" (click)="show()">Login as Patient</button>
+    </ul>
+  </div>
+</nav>
+  
+
+<mat-card>
+      <div class="container">
+      <div class="box1">
+        <mat-form-field>
+        <input matInput placeholder="Location">
+        <mat-icon matPrefix>location_on</mat-icon>
+        <mat-icon matSuffix>gps_fixed</mat-icon>
+       </mat-form-field>
+      </div>
+        
+      <div class="box2">
+        <mat-form-field>
+        <input  matInput placeholder="search doctors,clinics,hospitals etc.">
+        <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>  
+      </div>
+    </mat-card>      
+  

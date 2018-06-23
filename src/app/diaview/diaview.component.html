@@ -1,0 +1,89 @@
+<div *ngIf="user.role=='Patient'">
+
+        <table class="table  table-bordered table-hover table-responsive" align="center" >
+                <colgroup>
+                    <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 75%;">
+                  </colgroup>
+                <tr>
+                <td>Patient Id:</td>
+                <td>{{prescriptions.patient}}</td>
+                </tr>
+                
+                <tr>
+                    <td>Doctor Id:</td>
+                    <td>{{prescriptions.doctor}}</td>
+                    </tr>
+               
+          
+         <tr>
+            <td>Health Issue:</td>
+           <td>{{prescriptions.healthissue}}</td>
+       </tr>
+       <tr>
+          <td>Other Remark:</td>
+         <td>{{prescriptions.otherremark}}</td>
+     </tr>
+     <tr>
+            <td>Medicine:</td>
+           <td>{{prescriptions.medicine}}</td>
+       </tr>
+     <tr>
+        <td>Frequency:</td>
+       <td>{{prescriptions.frequency}}</td>
+   </tr>
+   <tr>
+        <td>Dosage:</td>
+       <td>{{prescriptions.dosage}}</td>
+    </tr>
+ <tr>
+    <td>Test:</td>
+   <td>{{prescriptions.test}}</td>
+</tr>
+</table>       
+ 
+
+   
+</div>
+<div *ngIf="user.role=='Doctor'">
+    <div >
+        <table class="table  table-bordered table-hover table-responsive" align="center">
+                <colgroup>
+                    <col span="1" style="width: 25%;">
+                    <col span="1" style="width: 75%;">
+                  </colgroup>
+            <tr>
+            <td>Patient Id:</td>
+            <td>{{prescriptions.patient}}</td>
+            </tr>
+         
+            
+         <tr>
+            <td>Health Issue:</td>
+           <td>{{prescriptions.healthissue}}</td>
+       </tr>
+       <tr>
+          <td>Other Remark:</td>
+         <td>{{prescriptions.otherremark}}</td>
+     </tr>
+     <tr>
+            <td>Medicine:</td>
+           <td>{{prescriptions.medicine}}</td>
+       </tr>
+     <tr>
+        <td>Frequency:</td>
+       <td>{{prescriptions.frequency}}</td>
+   </tr>
+   <tr>
+        <td>Dosage:</td>
+       <td>{{prescriptions.dosage}}</td>
+    </tr>
+ <tr>
+    <td>Test:</td>
+   <td>{{prescriptions.test}}</td>
+</tr>
+
+   
+         </table>
+         </div>
+</div>

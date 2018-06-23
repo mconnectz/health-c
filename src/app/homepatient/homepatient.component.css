@@ -1,0 +1,18 @@
+.container{
+    max-width: 400px;
+    margin: auto;
+    margin-top: 220px;
+    text-align: center;
+    padding: 24px 16px;
+    font-size:25px;
+    font-family:impact;
+   }
+   .box{
+    margin-top:25px;
+   }
+   
+   button{
+    margin-bottom: 10px;
+    width: 80%;
+    font-family:impact;
+   }

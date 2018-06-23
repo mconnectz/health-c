@@ -1,0 +1,39 @@
+<div class="center">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+  <h1>SIGNUP</h1>
+  <span class="space"></span>
+ <!-- <mat-form-field floatLabel="never">
+         <input type="text" placeholder="Role" formControlName="role" matInput [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+  </mat-form-field>-->
+  <mat-form-field floatLabel="never">
+    <input matInput placeholder="Role" formControlName="role"  [(ngModel)]="options" >
+  </mat-form-field>
+  <mat-form-field floatLabel="never">
+    <input matInput placeholder="Email" formControlName="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field floatLabel="never">
+    <input matInput placeholder="username" formControlName="username" >
+    <mat-error *ngIf="registerForm.controls.username.errors?.pattern && registerForm.controls.username.dirty">Username must contain meaningful</mat-error>
+    <mat-error *ngIf="registerForm.controls.username.errors?.required && registerForm.controls.username.pristine">Username must be required</mat-error>
+  </mat-form-field>
+  <mat-form-field floatLabel="never" class="fullwidth" color="accent">
+    <input matInput placeholder="password" type="password" name="password" formControlName="password" [type]="hide ? 'password' : 'text'" />
+          <mat-icon  matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+         
+          <mat-error *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.pristine">Password must be required</mat-error>
+
+  </mat-form-field>
+  <span class="space"></span>
+  <button mat-raised-button color="accent" type="submit" [disabled]="!registerForm.valid">Register</button>
+  <br>
+  <button mat-raised-button routerLink="/home">Back</button>
+
+  </form>
+
+</div>

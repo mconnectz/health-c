@@ -1,0 +1,31 @@
+<mat-card>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Medicine"  [(ngModel)]="prescriptions.medicine" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+    </form>
+    <mat-form-field color="accent">
+        <input type="text" matInput  placeholder="Frequency" [(ngModel)]="prescriptions.frequency" [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <section class="example-section">
+          <label class="example-margin">Dosage:</label>
+          <mat-radio-group class="example-radio-group" [(ngModel)]="prescriptions.dosage" [ngModelOptions]="{standalone: true}">
+            <mat-radio-button class="example-radio-button" *ngFor="let dosage of dosages" [value]="dosage">
+              {{dosage}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </section>
+        <mat-form-field>
+            <mat-select placeholder="Types of Test" [(ngModel)]="prescriptions.test" [formControl]="type" multiple >
+              <mat-option *ngFor="let test of tests" [value]="test">{{test}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+                        
+          <button  color="primary" (click)="presedit(prescriptions._id,prescriptions)" type="submit">Update</button>
+          <button class="btn btn-info" (click)="goBack()">Cancel</button>
+</mat-card>

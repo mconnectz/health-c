@@ -1,0 +1,252 @@
+<div *ngIf="user.role=='Sadmin'">
+  Hello {{user.username}}, welcome SuperAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Hadmin'">
+  Hello {{user.username}}, welcome HospitalAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Ladmin'">
+  Hello {{user.username}}, welcome LabAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Padmin'">
+  Hello {{user.username}}, welcome PharmAdmin.
+  </div>
+  
+  <div *ngIf="user.role=='Doctor'">
+  Hello {{user.username}}, welcome Doctor.
+  </div>
+  
+  <div *ngIf="user.role=='Patient'">
+    <mat-card>
+      <div >
+  <mat-toolbar>
+          <mat-toolbar-row>
+              <span>DETAILS</span>
+              <span class="spacer"></span>
+              <mat-icon id="icon" (click)="disabled = disabled">edit</mat-icon>
+          </mat-toolbar-row>
+  </mat-toolbar>
+  
+  <mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+      <mat-step> 
+                        
+          <ng-template matStepLabel >Basic Details</ng-template>
+              
+                  <div class="sub1" >
+                      <mat-form-field class="mat" color="accent">
+                          <input matInput name="Firstname"  [(ngModel)]="patient.firstname" placeholder="Firstname" >
+                        </mat-form-field>
+                      <mat-form-field color="accent" >
+                          <input matInput  [(ngModel)]="patient.lastname" placeholder="Lastname" >
+                      </mat-form-field>
+                  </div>
+                  <div class="sub1">
+                          <mat-form-field class="mat" color="accent" >
+                                  <input matInput  [(ngModel)]="patient.relationship" placeholder="Relationship" >
+                              </mat-form-field>
+                          <mat-form-field  color="accent">
+                              <input type="number" matInput  [(ngModel)]="patient.mobile" placeholder="Mobile" >
+                            </mat-form-field>
+                            <mat-form-field>
+                                    <input matInput [matDatepicker]="picker1" placeholder="Choose a date" [(ngModel)]="patient.dob">
+                                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker1></mat-datepicker>
+                               </mat-form-field>
+                        </div>
+                  <div class="sub2">
+                      <mat-form-field  class="mat" color="accent">
+                          <input matInput  [(ngModel)]="patient.email" placeholder="Email"  >
+                        </mat-form-field>
+                 
+                      </div>
+                      
+                      <div class="sub1" >
+                          <mat-form-field class="mat" color="accent" >
+                              <mat-select placeholder="Blood Group" [(value)]="patient.bloodgroup" >
+                                  <mat-option value="A+">A+</mat-option>
+                                  <mat-option value="A-">A-</mat-option>
+                                  <mat-option value="B+">B+</mat-option>
+                                  <mat-option value="B-">B-</mat-option>
+                                  <mat-option value="O+">O+</mat-option>
+                          
+                              </mat-select>
+                              </mat-form-field>
+                              <mat-form-field color="accent">
+                                  <mat-select placeholder="Gender" [(value)]="patient.gender" >
+                                      <mat-option value="Male">Male</mat-option>
+                                      <mat-option value="Female">Female</mat-option>
+                                      <mat-option value="Others">Others</mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                         
+                      </div>
+                    
+                  <div class="sub4">
+                      <div class="sub1">
+                          <mat-form-field color="accent">
+                              <textarea matInput  [(ngModel)]="patient.address" placeholder="Address" ></textarea>
+                          </mat-form-field>
+                      </div>
+                      </div>
+                      <div class="sub1">
+                            <mat-form-field class="example-full-width">
+                                    <input type="text" placeholder="City" aria-label="Number"  [(ngModel)]="patient.area" matInput [formControl]="Control1" [matAutocomplete]="auto2">
+                                    <mat-autocomplete #auto2="matAutocomplete">
+                                      <mat-option *ngFor="let area of filteredareas | async" [value]="area">
+                                        {{ area }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                          </div>
+                      <div class="sub1" >
+                            <mat-form-field class="example-full-width">
+                                    <input type="text" placeholder="City" aria-label="Number" [(ngModel)]="patient.city" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                                    <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-option *ngFor="let city of filteredcities | async" [value]="city">
+                                        {{ city }}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                  </mat-form-field>
+                                  <mat-form-field class="example-full-width">
+                                        <input type="text" placeholder="State" aria-label="Number"  [(ngModel)]="patient.state" matInput [formControl]="Control" [matAutocomplete]="auto1">
+                                        <mat-autocomplete #auto1="matAutocomplete">
+                                          <mat-option *ngFor="let state of filteredstates | async" [value]="state">
+                                            {{ state }}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                      </mat-form-field>
+                         
+                      </div>
+                      <div class="sub1">
+                              <mat-form-field class="mat" color="accent">
+                                  <mat-select placeholder="Country" [(value)]="patient.country">
+                                      <mat-option value="Algeria">Algeria</mat-option>
+                                      <mat-option value="Bangladesh"> Bangladesh</mat-option>
+                                      <mat-option value="Cambodia">Cambodia</mat-option>
+                                      <mat-option value="Denmark">Denmark</mat-option>
+                                      <mat-option value=" Greece">  Greece</mat-option>
+                                      <mat-option value="India"> India </mat-option>
+                                      
+                                  </mat-select>
+                                </mat-form-field>
+                              <mat-form-field color="accent">
+                                      <input  type="number" matInput  [(ngModel)]="patient.pincode" placeholder="PinCode">
+                              </mat-form-field>
+                              
+                          </div>
+                          <div>
+                              <button mat-raised-button color="primary" matStepperNext>Next</button>
+                          </div>
+                
+  
+      </mat-step>
+      <mat-step>
+          <ng-template matStepLabel>Health Info</ng-template>
+          
+                  <div class="sub1">
+                      <mat-form-field class="mat" color="accent">
+                          <input matInput  [(ngModel)]="patient.height" placeholder="Height (ft/cms)" >
+                        </mat-form-field>
+                      <mat-form-field color="accent" >
+                          <input matInput  [(ngModel)]="patient.weight" placeholder="Weight ( kg/lbs)" >
+                      </mat-form-field>
+                  </div>
+              
+                  <div class="sub4">
+                  <div class="sub1">
+                          <mat-form-field class="mat" color="accent">
+                              <input matInput  [(ngModel)]="patient.allergicto" placeholder="Allergic" >
+                            </mat-form-field>
+                          </div>
+                          </div>
+                 
+                    
+                     
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+    
+      </mat-step>
+      <mat-step>
+          <ng-template matStepLabel>Health information - Personal Habits:</ng-template>
+          <section class="example-section">
+              <label class="example-margin">1)Do you smoke? </label>
+              <mat-radio-group [(ngModel)]="patient.smoke">
+                <mat-radio-button  value="yes">Yes</mat-radio-button>
+                <mat-radio-button  value="no">No</mat-radio-button>
+              </mat-radio-group>
+            </section>
+            <section class="example-section">
+              <label class="example-margin"> 2)Do you use tobacco? </label>
+              <mat-radio-group [(ngModel)]="patient.tobacco">
+                <mat-radio-button value="yes">Yes</mat-radio-button>
+                <mat-radio-button  value="no">No</mat-radio-button>
+              </mat-radio-group>
+            </section>
+            <section class="example-section">
+              <label class="example-margin"> 3)Do you drink alcohol? </label>
+              <mat-radio-group [(ngModel)]="patient.alcohol">
+                <mat-radio-button class="example-margin" value="yes">Yes</mat-radio-button>
+                <mat-radio-button class="example-margin" value="no">No</mat-radio-button>
+              </mat-radio-group>
+            </section>
+            <div>
+              <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+          </mat-step>
+      <mat-step>
+                      
+                <ng-template matStepLabel>Insurance Info</ng-template>
+                
+                        <div class="sub1">
+                            <mat-form-field class="mat" color="accent">
+                                <input matInput [(ngModel)]="patient.insuranceprovidername" placeholder="Insurance Provider Name">
+                              </mat-form-field>
+                            <mat-form-field color="accent">
+                                <input matInput [(ngModel)]="patient.policyholdername" placeholder="Policy holder name">
+                            </mat-form-field>
+                        </div>
+                        <div class="sub1">
+                                <mat-form-field class="mat" color="accent">
+                                    <input matInput [(ngModel)]="patient.policyno" placeholder="Policy No" >
+                                  </mat-form-field>
+                               
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" placeholder="Policy issuance date" [(ngModel)]="patient.policyissuancedate">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                      <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                            </div>
+                             
+                <div>
+                  <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                 
+                  <button  mat-raised-button color="primary"(click)="profedit(patient._id,patient)"type="submit">Update</button>
+                  <a class="btn btn-info" (click)="goBack()">Cancel</a>
+              </div>
+         
+            </mat-step>
+             
+      
+     
+  </mat-horizontal-stepper>
+</div>  
+  </mat-card>  
+  </div>
+  
+  <div *ngIf="user.role=='Lab'">
+  Hello {{user.username}}, welcome Lab.
+  </div>
+  
+  <div *ngIf="user.role=='LabAssist'">
+  Hello {{user.username}}, welcome LabAssist.
+  </div>
+  
+  <div *ngIf="user.role=='Pharmacy'">
+  Hello {{user.username}}, welcome Pharmacy.
+  </div>
+  

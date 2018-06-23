@@ -1,0 +1,58 @@
+<div *ngIf="user.role=='Ladmin'">
+<div class="mat-elevation-z8 center">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+
+   <mat-table #table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+     <ng-container matColumnDef="patientId">
+       <mat-header-cell *matHeaderCellDef mat-sort-header>Patient Id </mat-header-cell>
+       <mat-cell *matCellDef="let p"> {{p.patientId}} </mat-cell>
+     </ng-container>
+     <ng-container matColumnDef="doctorId">
+       <mat-header-cell *matHeaderCellDef  mat-sort-header>Doctor Id</mat-header-cell>
+       <mat-cell *matCellDef="let p"> {{p.prescribeddoctorId}} </mat-cell>
+     </ng-container>
+ 
+     <ng-container matColumnDef="dateoftest">
+       <mat-header-cell *matHeaderCellDef  mat-sort-header>Date of Test</mat-header-cell>
+       <mat-cell *matCellDef="let p">{{p.dateoftest | date: 'dd'}}/{{p.dateoftest | date: 'MM'}}/{{p.dateoftest | date: 'yyyy'}} </mat-cell>
+     </ng-container>
+     <ng-container matColumnDef="typeoftest">
+         <mat-header-cell *matHeaderCellDef  mat-sort-header>Type of Test</mat-header-cell>
+         <mat-cell *matCellDef="let p"> {{p.typeoftest}} </mat-cell>
+       </ng-container>
+   <ng-container matColumnDef="actions">
+     <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+       <mat-cell *matCellDef="let p">
+         <button mat-icon-button color="primary" routerLink="/viewreport/{{p._id}}">
+         <mat-icon aria-label="View">visibility</mat-icon>
+         </button>
+         <button mat-icon-button color="primary" routerLink="/viewreport/{{p._id}}">
+           <mat-icon aria-label="Send">send</mat-icon>
+           </button>
+           <button mat-icon-button color="primary" (click)="deleterepo(p._id)">
+             <mat-icon aria-label="Delete">delete</mat-icon>
+             </button>
+             <button mat-icon-button color="primary" routerLink="/edittest/{{p._id}}">
+               <mat-icon aria-label="Edit">edit</mat-icon>
+               </button>
+   
+       </mat-cell>
+   </ng-container>
+ 
+     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+   </mat-table>
+ 
+  <mat-paginator 
+   [length]="dataSource.resultsLength"
+   [pageSize]="5" 
+   [pageSizeOptions]="[1, 2, 3, 5]">
+  </mat-paginator>
+ 
+ </div>
+</div>

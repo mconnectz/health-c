@@ -1,0 +1,21 @@
+.center {
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    transition: all 1s;
+    padding: 110px  20px;
+    font-family:impact;
+
+}
+.space{
+    padding-right: 20px;
+}
+mat-form-field,button{
+    width:100%;
+    margin-bottom: 10px;
+    width: 100%;
+    font-family:impact;
+}
+::ng-deep .mat-tab-labels{
+    justify-content: center; /* align items in Main Axis */
+}

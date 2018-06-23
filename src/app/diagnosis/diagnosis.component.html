@@ -1,0 +1,237 @@
+
+<div *ngIf="userr.role=='Sadmin'">
+  Hello {{userr.username}}, welcome SuperAdmin.
+  </div>
+  
+  <div *ngIf="userr.role=='Hadmin'">
+  Hello {{userr.username}}, welcome HospitalAdmin.
+  </div>
+  
+  <div *ngIf="userr.role=='Ladmin'">
+  Hello {{userr.username}}, welcome LabAdmin.
+  </div>
+  
+  <div *ngIf="userr.role=='Padmin'">
+  Hello {{userr.username}}, welcome PharmAdmin.
+  </div>
+  
+  <div *ngIf="userr.role=='Doctor'">
+<mat-card>
+        <mat-grid-list cols="3" rowHeight="4:1">
+            <mat-grid-tile><b class="b">Doc Id:</b> {{doctor._id}}</mat-grid-tile>
+            <mat-grid-tile><b class="b">Name:</b> {{doctor.username}}</mat-grid-tile>
+            <mat-grid-tile><b class="b">Speciality:</b> {{doctor.dspecialist}}</mat-grid-tile>
+            
+          </mat-grid-list>
+        
+
+      <mat-card>
+          <mat-form-field>
+              <mat-select (keyup)="getPatient($event.target.value)" placeholder="Select Patient Id" [(ngModel)]="id2">
+                <mat-option *ngFor="let p of pprofiles" [value]="p._id" >
+                  {{ p._id }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          
+            
+<!-- <div *ngIf="id2 !== undefined && id2 !==null">-->
+            <mat-form-field class="mat" color="accent">
+              <input matInput  [(ngModel)]="patient.username" placeholder="Patient Name" >
+            </mat-form-field>
+          <!--  </div>-->
+         <!-- <mat-form-field>
+              <mat-select placeholder="Select Patient" [(ngModel)]="patientname">
+                <mat-option *ngFor="let p of pprofiles" [value]="p.username" >
+                  {{ p.username }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>-->
+          <mat-horizontal-stepper>
+              <mat-step >
+                <form >
+                  <ng-template matStepLabel>Info</ng-template>
+                  </form>
+                  <div class="sub1">
+                  <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Patient Helath Isuues" [(ngModel)]="healthissue"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Diagnosis Report" [(ngModel)]="diagnosisreport"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                      <textarea matInput placeholder="Other Remarks" [(ngModel)]="otherremark" ></textarea>
+                    </mat-form-field>
+                    </div>
+                    <div>
+                      <button  color="primary" mat-raised-button matStepperNext>Next</button>
+                    </div>
+                  </mat-step>
+                  <mat-step >
+                    <form >
+                      <ng-template matStepLabel>Types of Tests</ng-template>
+                      
+                      <div class="sub1">
+                        <mat-form-field>
+                            <mat-select placeholder="Types of Test" [formControl]="types" multiple [(ngModel)]="test">
+                              <mat-option *ngFor="let type of type" [value]="type">{{type}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                           </div> 
+                           <mat-form-field >
+                            <textarea matInput placeholder="Comments" [(ngModel)]="comments"  [ngModelOptions]="{standalone: true}"></textarea>
+                          </mat-form-field>
+                          <button color="primary" mat-raised-button matStepperPrevious>Back</button> <button color="primary" mat-raised-button matStepperNext>Next</button>
+                     </form>
+                    </mat-step>
+                  <mat-step >
+                      <form >
+                        <ng-template matStepLabel>Prescription Details</ng-template>
+                       
+                        <mat-form-field color="accent">
+                          <input type="text" placeholder="Medicines Name" [(ngModel)]="medicine" name="option"aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                             <mat-autocomplete #auto="matAutocomplete">
+                                 <mat-option *ngFor="let medicine of filteredmedicines| async" [value]="medicine">
+                                     {{medicine}}
+                                 </mat-option>
+                             </mat-autocomplete>    
+                         </mat-form-field>
+                            <div class="sub1">
+                            <mat-form-field color="accent">
+                                <input type="text" matInput  placeholder="Frequency" [(ngModel)]="frequency" [ngModelOptions]="{standalone: true}">
+                              </mat-form-field>
+                            </div>
+                            <section class="example-section">
+                                <label class="example-margin">Dosage:</label>
+                                <mat-radio-group class="example-radio-group" [(ngModel)]="dosage1" [ngModelOptions]="{standalone: true}">
+                                  <mat-radio-button class="example-radio-button" *ngFor="let dosage of dosages" [value]="dosage">
+                                    {{dosage}}
+                                  </mat-radio-button>
+                                </mat-radio-group>
+                              </section>
+                           
+             
+                     <button color="primary" mat-raised-button matStepperPrevious>Back</button>   <button color="primary" (click)="reset()" mat-raised-button matStepperNext> Clear</button> <button color="primary" (click)="add(userr._id,id2)" mat-raised-button matStepperNext> Submit</button>       
+                         
+                          </form>
+                          <mat-card>
+                            <table class="table table-bordered table-hover">
+                              <thead>
+                                <tr>
+                                  <th>Medicine</th>
+                                  <th>Frequency</th>
+                                  <th>Dosage</th>
+                                  <th>Diagonis</th>
+                                  
+                                  <th>Action</th>
+                                  </tr>
+                              </thead>
+                             
+                              <tr *ngFor="let u of user1 let i=index"  >
+                                
+                                <td>{{u.medicine[i]}}</td>
+                                <td>{{u.frequency[i]}}</td>
+                               
+                                <td> {{u.dosage[i]}}</td>
+                                <td>{{u.diagnosisreport[i]}}</td>
+                            
+                                <td>
+                                   <pre> Delete</pre>
+              
+              
+                                </td>
+              
+                               
+                              </tr>
+                         
+                          
+                           
+                            </table>
+                          </mat-card> 
+                        </mat-step>
+                      
+                </mat-horizontal-stepper> 
+              </mat-card>
+              </mat-card>
+             
+                    
+                    
+        
+  </div>
+  
+  
+  <div *ngIf="userr.role=='Patient'">  
+    <div class="mat-elevation-z8 center" >
+        <div class="example-header">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+          </div>
+      
+        <mat-table #table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc" matSortDisableClear>
+          <ng-container matColumnDef="doctors">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Doctor's Id </mat-header-cell>
+            <mat-cell *matCellDef="let d"> {{d.doctor}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="patientname">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header>Patient's Id </mat-header-cell>
+            <mat-cell *matCellDef="let d"> {{d.patient}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="date">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header> Date </mat-header-cell>
+            <mat-cell *matCellDef="let d"> {{d.date | date: 'dd'}}/{{d.date | date: 'MM'}}/{{d.date | date: 'yyyy'}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="healthissue">
+            <mat-header-cell *matHeaderCellDef  mat-sort-header> Health Issue </mat-header-cell>
+            <mat-cell *matCellDef="let d"> {{d.healthissue}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+              <mat-cell *matCellDef="let d">
+                <button mat-icon-button color="primary" routerLink="/diaview/{{d._id}}">
+                 <mat-icon aria-label="View">visibility</mat-icon>
+                </button>
+              <button mat-icon-button color="accent" routerLink="/diagedit/{{d._id}}">
+                <mat-icon aria-label="Send" (click)="pharmshow()" >send</mat-icon>
+              </button>
+      
+              <button mat-icon-button color="warn"(click)="convert(d)">
+                <mat-icon aria-label="Download">vertical_align_bottom</mat-icon>
+              </button>
+             </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+      
+    <mat-paginator 
+        [length]="dataSource.resultsLength"
+        [pageSize]="5" 
+        [pageSizeOptions]="[1, 2, 3, 5]">
+    </mat-paginator>
+      
+      </div>
+      <mat-card *ngIf="!show">
+          <mat-form-field>
+              <mat-select placeholder="Select Pharmacy Id" [(ngModel)]="phaid">
+                <mat-option *ngFor="let p of pharmid" [value]="p._id" >
+                  {{ p._id }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            </mat-card>
+    </div>
+  
+  <div *ngIf="userr.role=='Lab'">
+  Hello {{userr.username}}, welcome Lab.
+  </div>
+  
+  <div *ngIf="userr.role=='LabAssist'">
+  Hello {{userr.username}}, welcome LabAssist.
+  </div>
+  
+  <div *ngIf="userr.role=='Pharmacy'">
+  Hello {{userr.username}}, welcome Pharmacy.
+  </div>
+  

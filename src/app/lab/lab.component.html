@@ -1,0 +1,44 @@
+<input [(ngModel)]="query" (keyup)="find($event.target.value)" placeholder="search">
+<button (click)="find()">search</button> 
+
+<div *ngIf="!Editing">
+
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">phone</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.name}}</td>
+          <td>{{user.phone}}</td>
+          <td><img width="100" height="100" [src]="'data:image/jpg;base64,'+user.photo"></td>
+          <td>
+            <button (click)="enableEditing(user)">Edit</button>
+            <button (click)="delete(user._id)">delete</button>  
+          </td>
+        </tr>  
+      </tbody>
+    </table>
+
+    <form [formGroup]="addForm">
+        <input formControlName="name" placeholder="Name">
+        <input formControlName="phone" placeholder="Phone">
+        <input type="file" (change)="handleFileSelect($event)">
+        <input [ngModel]="pic" formControlName="photo" placeholder="pic">
+        <button (click)="add()" [disabled]="!addForm.valid">Add</button>
+    </form>
+        
+</div>
+
+<div *ngIf="Editing">
+    <form #form="ngForm" (ngSubmit)="edit(user)">
+        <input name="name" [(ngModel)]="user.name" placeholder="Name">
+        <input name="phone" [(ngModel)]="user.phone" placeholder="Phone" >
+        <button type="submit">Save</button>
+        <button class="btn btn-sm btn-warning" (click)="cancelEditing()">Cancel</button>
+    </form>
+</div>

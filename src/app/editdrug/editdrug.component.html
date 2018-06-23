@@ -1,0 +1,37 @@
+<mat-card>
+  <div class="sub1">
+    <mat-card-header>
+        <img mat-card-avatar src="assets/img/bg1.jpg">
+     <h2>ADD NEW DRUG</h2>
+     </mat-card-header>
+      </div>
+    
+    <div class="sub1">
+  <mat-form-field class="mat">
+    <input matInput [(ngModel)]="drug.drugname"placeholder="Drug Name">
+  </mat-form-field>
+  </div>
+  <div class="sub1">
+  <mat-form-field class="mat">
+    <input matInput  [(ngModel)]="drug.drugbrand" placeholder="Drug brand ">
+  </mat-form-field>
+  </div>
+  <div class="sub1">
+  <mat-form-field class="mat">
+    <input matInput  [(ngModel)]="drug.quantity" placeholder="Quantity">
+  </mat-form-field>
+  </div>
+  <div class="sub1">
+  <mat-form-field class="mat">
+    <input matInput  [(ngModel)]="drug.weight" placeholder="Weight">
+  </mat-form-field>
+  </div>
+  <div class="sub1">
+  <mat-form-field class="mat">
+    <input matInput  [(ngModel)]="drug.stock" placeholder="Stock">
+  </mat-form-field>
+  </div>
+   <button mat-raised-button color="primary" (click)="editmedicine(drug._id,drug)" type="submit">Update</button> 
+   <a class="btn btn-info" (click)="goBack()">Cancel</a>      
+</mat-card>
+
